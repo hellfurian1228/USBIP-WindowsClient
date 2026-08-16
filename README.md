@@ -1,52 +1,50 @@
-# USBIPClient
+# USBIP-WindowsClient
 
-A C++ Windows command-line client for the USBIP (USB over IP) protocol. This client connects to a USBIP server and queries the list of exported USB devices.
+[![Status](https://img.shields.io/badge/Status-Beta-orange.svg?style=flat-square)](https://github.com/hellfurian1228/USBIP-WindowsClient)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg?style=flat-square&logo=paypal)](https://www.paypal.com/donate/?hosted_button_id=P3P43EXYJWRLC)
 
-## Features
+A modern, Qt-based graphical user interface for the USB/IP protocol on Windows. This client allows you to easily connect to remote USB/IP servers, mount shared USB devices, and manage connections with a clean and intuitive interface.
 
-- TCP/IP connection to a USBIP server.
-- Query and list exported USB devices (`OP_REQ_DEVLIST` / `OP_REP_DEVLIST`).
-- Cross-platform socket abstraction (Winsock on Windows, standard POSIX sockets on Linux).
+## ✨ Features
+Intuitive GUI: Easily scan hosts, list available remote USB devices, and attach/detach them with a single click.
 
-## Project Structure
+Auto-Connect: Automatically reconnect to desired devices on startup.
 
-- [CMakeLists.txt](CMakeLists.txt) - CMake configuration file.
-- [src/main.cpp](src/main.cpp) - Entry point and command-line interface.
-- [src/usbip_client.h](src/usbip_client.h) - USBIPClient class declaration.
-- [src/usbip_client.cpp](src/usbip_client.cpp) - USBIPClient class implementation.
-- [src/usbip_protocol.h](src/usbip_protocol.h) - USBIP protocol structures and constants.
+System Tray Integration: Minimize the application to the system tray to keep it running in the background.
 
-## Requirements
+Audio Relay Subsystem: Stream and receive audio over UDP to relay audio devices between systems.
 
-- Windows 10/11 or Linux.
-- Visual Studio 2022/2026 (with C++ CMake tools) or GCC/Clang with CMake.
+System Logger: Built-in real-time logger for monitoring connection status and troubleshooting.
 
-## Building the Project
+Multi-Architecture Support: Fully compatible with both x64 and ARM64 Windows devices.
 
-### Using VS Code Tasks
+## 📦 Requirements
+OS: Windows 10 (version 1903 or later) or Windows 11 (x64 / ARM64)
 
-1. Open the command palette (`Ctrl+Shift+P`).
-2. Run `Tasks: Run Build Task` and select `CMake Build`.
+Drivers: USB/IP VHCI and UDE drivers installed (Test Signing mode enabled if using unsigned drivers)
 
-### Using Command Line
+Framework: Qt 6.11.1 or later
 
-```powershell
-# Configure the project
-& "C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -B build -S .
+## 🛠️ Build Instructions
+### 1. IDE Setup
+*   Open the project folder in Visual Studio or VS Code.
 
-# Build the project
-& "C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --build build --config Debug
-```
+### 2. Configuration
+*   Configure the project using CMake.
 
-## Usage
+### 3. Compilation
+*   Build the ALL_BUILD target in Release configuration.
 
-Run the compiled executable with the host and port of the USBIP server:
+### 4. Packaging
+*   Package the installer using CPack (NSIS generator).
 
-```cmd
-build\Debug\USBIPClient.exe <host> <port>
-```
+## ☕ Support the Project
+If you find this tool useful and want to support continued development, feel free to buy me a coffee!
 
-Example:
-```cmd
-build\Debug\USBIPClient.exe 192.168.1.100 3240
-```
+[**Donate via PayPal**](https://www.paypal.com/donate/?hosted_button_id=P3P43EXYJWRLC)
+
+## 🛠️ Tech Stack
+*   **C++ (JNI):** High-performance native server daemon for protocol handling.
+*   **CMake:** Unified build system for native components.
+
+*Note: This is an early beta. Use it, break it, and report issues to help improve stability.*
